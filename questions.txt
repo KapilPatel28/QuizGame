@@ -1,0 +1,61 @@
+What is the size of an integer in C++?
+1. 2 bytes
+2. 4 bytes
+3. 8 bytes
+4. 1 byte
+B
+What is the default value of a static variable in C++?
+1. 0
+2. Garbage value
+3. Null
+4. Undefined
+A
+Which of the following is used to get the size of a data type in C++?
+1. sizeof()
+2. size()
+3. length()
+4. sizeof_data()
+A
+What is the output of the following code: cout << 10/3;
+1. 3.333
+2. 3
+3. 3.0
+4. Error
+B
+What does the `new` keyword do in C++?
+1. Allocates memory
+2. Deletes memory
+3. Declares a variable
+4. Defines a function
+A
+Which operator is used to access members of a structure in C++?
+1. .
+2. ->
+3. ::
+4. .
+B
+Which of the following is the correct syntax for defining a constructor in C++?
+1. class MyClass{ MyClass(); };
+2. MyClass(){};
+3. void MyClass(){}; 
+4. constructor MyClass(){}
+B
+What is a destructor in C++?
+1. It initializes an object.
+2. It deallocates memory when an object is destroyed.
+3. It is used to assign values to an object.
+4. It is used to create objects.
+B
+Which of the following is true about a constructor in C++?
+1. A constructor can have any return type.
+2. A constructor can be called explicitly.
+3. A constructor cannot be overloaded.
+4. A constructor cannot be defined with parameters.
+B
+What is the purpose of the `virtual` keyword in C++?
+1. To create a constant variable
+2. To define a class
+3. To allow a function to be overridden in a derived class
+4. To define a template function
+C
+
