@@ -7,63 +7,63 @@ struct Player {
     string name;
     string email;
 };
-// Function to register player details
+
 Player registerPlayer() {
     Player player;
     cout << "Enter your name: ";
-    getline(cin, player.name);  // Get the player's name
+    getline(cin, player.name);  
     cout << "Enter your email: ";
-    getline(cin, player.email);  // Get the player's email
+    getline(cin, player.email);  
     cout << "Registration successful!" << endl;
     return player;
 }
 
-// Structure to store quiz questions, options, and the correct answer
+
 struct Question {
     string question;
     string options[4];
     char correctAnswer;
 };
 
-// Function to load quiz questions from a file
+
 vector<Question> loadQuestions() {
     vector<Question> questions;
-    ifstream file("questions.txt");  // Open questions.txt for reading
+    ifstream file("questions.txt");  
     if (!file) {
         cout << "Error opening questions file!" << endl;
-        return questions;  // Return empty vector if file not found
+        return questions;  
     }
 
     string line;
     while (getline(file, line)) {
         Question q;
-        q.question = line;  // Read the question
+        q.question = line;  
         for (int i = 0; i < 4; i++) {
             getline(file, line);
-            q.options[i] = line;  // Read the options
+            q.options[i] = line;  
         }
         getline(file, line);
-        q.correctAnswer = line[line.size() - 1];  // Access last character (correct answer)
-        questions.push_back(q);  // Add question to the vector
+        q.correctAnswer = line[line.size() - 1]; 
+        questions.push_back(q); 
     }
     file.close();
-    return questions;  // Return the vector of questions
+    return questions;  
 }
 
-// Function to play the quiz
+
 void playQuiz(const vector<Question>& questions) {
     int score = 0;
     char answer;
 
-    // Using traditional for loop instead of range-based
+
     for (int i = 0; i < questions.size(); i++) {
-        cout << questions[i].question << endl;  // Display the question
+        cout << questions[i].question << endl;  
         for (int j = 0; j < 4; j++) {
-            cout << (char)('A' + j) << ". " << questions[i].options[j] << endl;  // Display the options
+            cout << (char)('A' + j) << ". " << questions[i].options[j] << endl;  
         }
         cout << "Enter your answer (A/B/C/D): ";
         cin >> answer;
-        if (toupper(answer) == toupper(questions[i].correctAnswer)) {  // Compare answers (case insensitive)
+        if (toupper(answer) == toupper(questions[i].correctAnswer)) {  
             score++;
             cout << "Correct!" << endl;
         } else {
@@ -74,44 +74,44 @@ void playQuiz(const vector<Question>& questions) {
     cout << "Your final score is: " << score << endl;
 }
 
-// Function to save the player's score to a file
+
 void saveScore(const Player& player, int score) {
-    ofstream file("scores.txt", ios::app);  // Open scores.txt in append mode
+    ofstream file("scores.txt", ios::app);  
     if (!file) {
         cout << "Error opening score file!" << endl;
-        return;  // If the file cannot be opened, do not proceed
+        return;  
     }
-    file << player.name << " (" << player.email << ") - Score: " << score << endl;  // Save the score
+    file << player.name << " (" << player.email << ") - Score: " << score << endl; 
     file.close();
 }
 
-// Function to display the leaderboard from the file
+
 void displayLeaderboard() {
-    ifstream file("scores.txt");  // Open scores.txt for reading
+    ifstream file("scores.txt");  
     if (!file) {
         cout << "Error opening score file!" << endl;
-        return;  // If the file is not found, return
+        return; 
     }
 
     string line;
     cout << "Leaderboard:" << endl;
     while (getline(file, line)) {
-        cout << line << endl;  // Display each score entry
+        cout << line << endl;
     }
     file.close();
 }
 
 int main() {
-    Player player = registerPlayer();  // Register the player
-    vector<Question> questions = loadQuestions();  // Load questions from the file
+    Player player = registerPlayer();  
+    vector<Question> questions = loadQuestions();  
     if (questions.empty()) {
         cout << "No questions loaded. Exiting..." << endl;
-        return 1;  // Exit if no questions were loaded
+        return 1; 
     }
 
-    playQuiz(questions);  // Play the quiz
-    saveScore(player, 10);  // Example: Save score as 10
-    displayLeaderboard();  // Display the leaderboard
+    playQuiz(questions);  
+    saveScore(player, 10);  
+    displayLeaderboard();  
     return 0;
 }
 
